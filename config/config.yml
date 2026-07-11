@@ -1,0 +1,59 @@
+file:
+  csv: "2019-Nov.csv"
+
+temp:
+  bronze:
+    deduplicate: "bronze_deduplicate"
+  silver:
+    nonull: "silver_nonull"
+    concat: "silver_concat"
+
+database:
+  bronze: "bronze_db"
+  silver: "silver_db"
+
+delta: 
+  bronze:
+    original_data: "bronze_original"
+    final_data: "bronze_final"
+  silver:
+    original_data: "silver_original"
+    transformed_data: "silver_transformed"
+    final_data: "silver_final"
+
+columns:
+- event_time
+- event_type
+- product_id
+- category_id
+- category_code
+- brand
+- price
+- user_id
+- user_session
+
+null_removal:
+- product_id
+- category_id
+- category_code
+- brand
+
+dimension:
+  dim_product:
+    - product_id
+    - category_id
+    - category_code
+    - brand
+  dim_event_type:
+    - event_type
+  dim_user:
+    - user_id
+
+facts:
+  - event_time
+  - event_type
+  - product_id
+  - price
+  - user_id
+  - user_session
+
